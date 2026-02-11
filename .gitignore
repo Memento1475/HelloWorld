@@ -1,0 +1,14 @@
+.venv1/
+
+chroma_db/
+chroma_db_storage/
+
+.idea/
+
+__pycache__/
+*.py[cod]
+*$py.class
+
+# *.pdf
+
+.env
