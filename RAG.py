@@ -5,6 +5,7 @@ from langchain_chroma import Chroma
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_ollama import OllamaEmbeddings
+from langchain_huggingface import HuggingFaceEmbeddings
 
 # 配置区域
 PDF_FILE_NAME = "数据结构.pdf"  # 换材料只需更改这一行
@@ -16,7 +17,7 @@ EMBED_MODEL = "nomic-embed-text"
 
 
 def main():
-    embeddings = OllamaEmbeddings(model=EMBED_MODEL, base_url="http://127.0.0.1:11434")
+    embeddings = HuggingFaceEmbeddings(model_name="BAAI/bge-large-zh-v1.5")
 
     # 以下为自动化逻辑：检查是否需要重新建库
     # 这里通过检查文件夹是否存在来判断
@@ -52,7 +53,9 @@ def main():
         if question.lower() in ['q', 'exit']: break
 
         # 检索并调用deepseek
+        retrieve_start = time.time()
         relevant_docs = vectorstore.similarity_search(question, k=10)
+        retrieve_end = time.time()
         context = "\n\n".join([d.page_content for d in relevant_docs])
 
         prompt = f"""
@@ -71,10 +74,15 @@ def main():
                 {question}
                 """
 
+        llm_start = time.time()
         response = ollama.chat(model=CHAT_MODEL, messages=[{'role': 'user', 'content': prompt}], stream=True)
         for chunk in response:
             print(chunk['message']['content'], end='', flush=True)
         print("\n" + "-" * 20)
+        llm_end = time.time()
+
+        print(f"\n[检索耗时] {retrieve_end - retrieve_start:.3f} 秒")
+        print(f"\n[LLM生成耗时] {llm_end - llm_start:.3f} 秒")
 
 if __name__ == "__main__":
     main()
