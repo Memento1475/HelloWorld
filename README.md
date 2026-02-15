@@ -124,26 +124,26 @@ ollama pull deepseek-r1
 >
 > 首先要确保Ollama处于运行状态。
 >
-> ![image-20260215233757861](C:\Users\LENOVO\AppData\Roaming\Typora\typora-user-images\image-20260215233757861.png)
+> ![image-20260215233757861](images/屏幕截图 2026-02-15 233754.png)
 
 
 
 `.pdf`与`.exe`在同一目录下。
 
-![image-20260215234036896](C:\Users\LENOVO\AppData\Roaming\Typora\typora-user-images\image-20260215234036896.png)
+![image-20260215234036896](images/屏幕截图 2026-02-15 233913.png)
 
 
 
 运行界面：
-![image-20260215234229538](C:\Users\LENOVO\AppData\Roaming\Typora\typora-user-images\image-20260215234229538.png)
+![image-20260215234229538](images/屏幕截图 2026-02-15 234210.png)
 
 
 
 输入问题，程序给出回答：
 
-![image-20260215235041980](C:\Users\LENOVO\AppData\Roaming\Typora\typora-user-images\image-20260215235041980.png)
+![image-20260215235041980](images/屏幕截图 2026-02-15 235039.png)
 
 
 
 AI输出：
-![image-20260215235107765](C:\Users\LENOVO\AppData\Roaming\Typora\typora-user-images\image-20260215235107765.png)
+![image-20260215235107765](images/屏幕截图 2026-02-15 235101.png)
